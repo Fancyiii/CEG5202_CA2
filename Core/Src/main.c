@@ -51,20 +51,20 @@ int main(void)
 		float humidity_data;
 		humidity_data = BSP_HSENSOR_ReadHumidity();  // read humidity sensor
 
-//		float magneto_data[3];
-//		int16_t magneto_data_i16[3] = { 0 };			// array to store the x, y and z readings.
-//		BSP_MAGNETO_GetXYZ(magneto_data_i16);		// read accelerometer
-//		// the function above returns 16 bit integers which are 100 * acceleration_in_m/s2. Converting to float to print the actual acceleration.
-//		magneto_data[0] = (float)magneto_data_i16[0] / 100.0f;
-//		magneto_data[1] = (float)magneto_data_i16[1] / 100.0f;
-//		magneto_data[2] = (float)magneto_data_i16[2] / 100.0f;
+		float magneto_data[3];
+		int16_t magneto_data_i16[3] = { 0 };			// array to store the x, y and z readings.
+		BSP_MAGNETO_GetXYZ(magneto_data_i16);		// read accelerometer
+		// the function above returns 16 bit integers which are 100 * acceleration_in_m/s2. Converting to float to print the actual acceleration.
+		magneto_data[0] = (float)magneto_data_i16[0] / 100.0f;
+		magneto_data[1] = (float)magneto_data_i16[1] / 100.0f;
+		magneto_data[2] = (float)magneto_data_i16[2] / 100.0f;
 
 		float pressure_data;
 		pressure_data = BSP_PSENSOR_ReadPressure();
 
 
 
-		printf("Accel XYZ=%f %f %f; Temperature=%f; humidity=%f; pressure=%f\n", accel_data[0], accel_data[1], accel_data[2], temp_data, humidity_data, pressure_data);
+		printf("Accel XYZ=%f %f %f; Temperature=%f; humidity=%f; magneto XYZ=%f, %f, %f; pressure=%f\n", accel_data[0], accel_data[1], accel_data[2], temp_data, humidity_data, magneto_data[0], magneto_data[1], magneto_data[2], pressure_data);
 		HAL_Delay(1000);	// read once a ~second.
 
 	}
